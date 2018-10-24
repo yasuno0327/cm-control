@@ -20,11 +20,11 @@ func main() {
 	//result := logisticMapBig(big.NewFloat(xo), big.NewFloat(a), n)
 	result := logisticMap(xo, a, n)
 	if math.IsInf(result[n-1], -1) {
-		fmt.Println("マイナス無限大に発散しました。")
+		fmt.Println("マイナス無限大に発散しました。\n")
 	} else if math.IsInf(result[n-1], 1) {
-		fmt.Println("無限大に発散しました。")
+		fmt.Println("無限大に発散しました。\n")
 	} else {
-		fmt.Printf("%vに収束しました。", result[n-1])
+		fmt.Printf("%vに収束しました。\n", result[n-1])
 	}
 }
 
