@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math/big"
+	"math"
 	"os"
 	"strconv"
 )
@@ -17,9 +17,14 @@ func main() {
 	a := ReadFloat()
 	fmt.Println("繰り返し回数を入力してください")
 	n := ReadInt()
-	result := logisticMap(big.NewFloat(xo), big.NewFloat(a), n)
-	for i := range result {
-		fmt.Println(result[i].String())
+	//result := logisticMapBig(big.NewFloat(xo), big.NewFloat(a), n)
+	result := logisticMap(xo, a, n)
+	if math.IsInf(result[n-1], -1) {
+		fmt.Println("マイナス無限大に発散しました。")
+	} else if math.IsInf(result[n-1], 1) {
+		fmt.Println("無限大に発散しました。")
+	} else {
+		fmt.Printf("%vに収束しました。", result[n-1])
 	}
 }
 

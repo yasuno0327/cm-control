@@ -4,7 +4,7 @@ import (
 	"math/big"
 )
 
-func logisticMap(xo *big.Float, a *big.Float, n int) []big.Float {
+func logisticMapBig(xo *big.Float, a *big.Float, n int) []big.Float {
 	array := make([]big.Float, n)
 	array[0] = *xo
 	for i := 1; i < n; i++ {
@@ -13,6 +13,15 @@ func logisticMap(xo *big.Float, a *big.Float, n int) []big.Float {
 		z.Mul(a, &array[i-1])
 		result.Mul(z, new(big.Float).Sub(big.NewFloat(1), &array[i-1]))
 		array[i] = *result
+	}
+	return array
+}
+
+func logisticMap(xo float64, a float64, n int) []float64 {
+	array := make([]float64, n)
+	array[0] = xo
+	for i := 1; i < n; i++ {
+		array[i] = a * array[i-1] * (1 - array[i-1])
 	}
 	return array
 }
